@@ -3,6 +3,7 @@ using ApplicationCore.Models.QuizAggregate;
 using BackendLab01;
 
 namespace Infrastructure.Memory;
+
 public static class SeedData
 {
     public static void Seed(this WebApplication app)
@@ -12,20 +13,70 @@ public static class SeedData
             var provider = scope.ServiceProvider;
             var quizRepo = provider.GetService<IGenericRepository<Quiz, int>>();
             var quizItemRepo = provider.GetService<IGenericRepository<QuizItem, int>>();
-            
-            //TODO Utwórz trzy pytania typu QuizItem
-            //TODO Dodaj je do quizItemRepo
-            //TODO Utwórz obiekt klasy Quiz z kolekcją pytań dodanych do quizItemRepo
-            //TODO Dodaj Quiz do quizRepo
-            
-            QuizItem item1 = new QuizItem(id:1, question: "2+4", correctAnswer: "6", incorrectAnswers: ["5","7", "8"]);
-            QuizItem item2 = new QuizItem(id:1, question: "2*4", correctAnswer: "8", incorrectAnswers: ["4","6", "9"]);
-            QuizItem item3 = new QuizItem(id:1, question: "8/2", correctAnswer: "4", incorrectAnswers: ["5","7", "8"]);
-            quizItemRepo?.Add(item1);
-            quizItemRepo?.Add(item2);
-            quizItemRepo?.Add(item3);
-            Quiz quiz = new(id: 1, title: "Matematyka", items: [item1, item2, item3]);
-            quizRepo?.Add(quiz);
+            if (quizRepo != null && quizItemRepo != null)
+            {
+                var animalQuestion1 = new QuizItem(
+                    1,
+                    "Which of these animals can live without water for several months?",
+                    new List<string> { "Elephant", "Penguin" }, 
+                    "Kangaroo rat");
+
+                var animalQuestion2 = new QuizItem(
+                    2,
+                    "What is the largest living species of lizard?",
+                    new List<string> { "Iguana", "Monitor lizard" }, 
+                    "Komodo dragon");
+
+                var animalQuestion3 = new QuizItem(
+                    3,
+                    "Which animal has the longest migration of any mammal?",
+                    new List<string> { "Caribou", "African elephant" },  
+                    "Gray whale");
+
+                quizItemRepo.Add(animalQuestion1);
+                quizItemRepo.Add(animalQuestion2);
+                quizItemRepo.Add(animalQuestion3);
+
+                var AnimalsQuiz = new Quiz(
+                    1,
+                    new List<QuizItem> { animalQuestion1, animalQuestion2, animalQuestion3 },
+                    " Animal Quiz");
+
+                quizRepo.Add(AnimalsQuiz);
+
+                var sportsQuestion1 = new QuizItem(
+                    1,
+                    "Which country won the 2018 FIFA World Cup?",
+                    new List<string> { "Germany", "Brazil" },  
+                    "France");
+
+                var sportsQuestion2 = new QuizItem(
+                    2,
+                    "Which city hosted the 2008 Summer Olympics?",
+                    new List<string> { "Athens","London" },  
+                    "Beijing");
+
+                var sportsQuestion3 = new QuizItem(
+                    3,
+                    "Who holds the record for most Grand Slam singles titles in tennis?",
+                    new List<string> {"Serena Williams", "Rafael Nadal" },
+                    "Roger Federer");
+
+                quizItemRepo.Add(sportsQuestion1);
+                quizItemRepo.Add(sportsQuestion2);
+                quizItemRepo.Add(sportsQuestion3);
+
+                var sportsQuiz = new Quiz(
+                    1,
+                    new List<QuizItem> { sportsQuestion1, sportsQuestion2, sportsQuestion3 },
+                    "Sports Quiz");
+
+                quizRepo.Add(sportsQuiz);
+
+
+
+            }
+
         }
     }
 }

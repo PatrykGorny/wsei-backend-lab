@@ -1,8 +1,43 @@
-﻿@page "{quizId}/{itemId}"
+﻿@page "{quizId}"
 @model BackendLab01.Pages.Summary
 @{
-    ViewData["Title"] = "summary";
+    ViewData["Title"] = "Quiz Results";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<H3>@ViewData["Title"]</H3>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Quiz Results: @Model.QuizTitle</h2>
+
+    <p class="text-center lead mb-5">You answered <strong>@Model.CorrectAnswers</strong> out of <strong>@Model.TotalQuestions</strong> questions correctly!</p>
+
+    <div class="d-flex justify-content-center gap-3">
+        <a asp-page="/Index" class="btn btn-primary btn-lg">Back to Home</a>
+        <a asp-page="/Quiz/Item" asp-route-quizId="@Model.QuizId" asp-route-itemId="1" class="btn btn-secondary btn-lg">Try Again</a>
+    </div>
+</div>
+<style>
+    body {
+        background-color: #f8f9fa;  
+    }
+
+    h2 {
+        color: #343a40;  
+    }
+
+    p.lead {
+        font-size: 1.25rem;  
+        color: #6c757d;  
+    }
+
+    button {
+        width: 200px; 
+        padding: 10px;  
+        border-radius: 5px;  
+        font-weight: bold;  
+    }
+
+    button:hover {
+        background-color: #0056b3;  
+    }
+
+</style>
