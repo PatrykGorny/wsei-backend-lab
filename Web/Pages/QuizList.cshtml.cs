@@ -18,7 +18,7 @@ public class QuizListModel : PageModel
 
     public void OnGet()
     {
-        var availableQuizzes = _quizService.GetAllQuizzes();
+        var availableQuizzes = _quizService.FindAllQuizzes();
         if (availableQuizzes != null)
         {
             Quizzes = availableQuizzes.ToList();
