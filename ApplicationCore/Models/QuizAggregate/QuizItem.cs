@@ -2,11 +2,23 @@
 
 namespace ApplicationCore.Models.QuizAggregate;
 
-public class QuizItem(int id, string question, List<string> incorrectAnswers, string correctAnswer)
-    : IIdentity<int>
+public class QuizItem: IIdentity<int>
 {
-    public int Id { get; set; } = id;
-    public string Question { get; } = question;
-    public List<string> IncorrectAnswers { get; } = incorrectAnswers;
-    public string CorrectAnswer { get;  } = correctAnswer;
+    public int Id { get; set; }
+    public string Question { get; set; }
+    public List<string> IncorrectAnswers { get; set; }
+    public string CorrectAnswer { get; set; }
+
+    public QuizItem()
+    {
+        
+    }
+
+    public QuizItem(int id, string question, List<string> incorrectAnswers, string correctAnswer)
+    {
+        Id = id;
+        Question = question;
+        IncorrectAnswers = incorrectAnswers;
+        CorrectAnswer = correctAnswer;
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using ApplicationCore.Models;
 using ApplicationCore.Models.QuizAggregate;
 
-namespace BackendLab01;
+namespace ApplicationCore.Interfaces.UserService;
 
 public interface IQuizUserService
 {
@@ -18,6 +18,7 @@ public interface IQuizUserService
         return GetUserAnswersForQuiz(quizId, userId)
             .Count(e => e.IsCorrect());
     }
+
     IEnumerable<Quiz> FindAllQuizzes();
     
 }

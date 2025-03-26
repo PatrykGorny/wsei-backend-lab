@@ -1,0 +1,27 @@
+@page
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model BackendLab01.Pages.Quiz.QuizList
+
+@{
+    Layout = null;
+}
+
+<h1>Dostępne quizy</h1>
+
+@if (Model.quizList.Count == 0)
+{
+    <p>Brak dostępnych quizów.</p>
+}
+else
+{
+    <ul>
+        @foreach (var quiz in Model.quizList)
+        {
+            <li>
+                <a asp-page="Item" asp-route-quizId="@quiz.Id" asp-route-itemId="1">
+                    @quiz.Title
+                </a>
+            </li>
+        }
+    </ul>
+}

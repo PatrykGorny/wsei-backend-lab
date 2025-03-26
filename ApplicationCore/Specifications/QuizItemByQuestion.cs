@@ -1,6 +1,5 @@
 ﻿using ApplicationCore.Commons.Specification;
 using ApplicationCore.Models.QuizAggregate;
-using BackendLab01;
 
 namespace ApplicationCore.Specifications;
 

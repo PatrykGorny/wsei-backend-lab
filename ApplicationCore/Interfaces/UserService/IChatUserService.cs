@@ -1,9 +1,12 @@
-namespace BackendLab01;
+namespace ApplicationCore.Interfaces.UserService;
 
 public interface IChatUserService
 {
-    void Add(string connectionId, string username);
-    void RemoveByName(string username);
-    string GetConnectionIdByName(string username);
-    IEnumerable<(string ConnectionId, string Username)> GetAll();
+    public void Add(string connectionId, string username);
+
+    public void RemoveByName(string username);
+
+    public string GetConnectionIdByName(string username);
+
+    public IEnumerable<(string ConnectionId, string Username)> GetAll();
 }
