@@ -1,9 +1,7 @@
 ﻿using ApplicationCore.Commons.Repository;
 using ApplicationCore.Models.QuizAggregate;
-using BackendLab01;
 
-namespace Infrastructure.Memory;
-
+namespace BackendLab01;
 public static class SeedData
 {
     public static void Seed(this WebApplication app)
@@ -13,70 +11,22 @@ public static class SeedData
             var provider = scope.ServiceProvider;
             var quizRepo = provider.GetService<IGenericRepository<Quiz, int>>();
             var quizItemRepo = provider.GetService<IGenericRepository<QuizItem, int>>();
-            if (quizRepo != null && quizItemRepo != null)
-            {
-                var animalQuestion1 = new QuizItem(
-                    1,
-                    "Which of these animals can live without water for several months?",
-                    new List<string> { "Elephant", "Penguin" }, 
-                    "Kangaroo rat");
 
-                var animalQuestion2 = new QuizItem(
-                    2,
-                    "What is the largest living species of lizard?",
-                    new List<string> { "Iguana", "Monitor lizard" }, 
-                    "Komodo dragon");
+            List<QuizItem> quiz1_Items = new List<QuizItem>();
+            quiz1_Items.Add(quizItemRepo.Add(new QuizItem(id: 1, correctAnswer: "A", incorrectAnswers: new List<string>(){"B", "C", "D"},question: "Pierwsza litera alfabetu?")));
+            quiz1_Items.Add(quizItemRepo.Add(new QuizItem(id: 2, correctAnswer: "B", incorrectAnswers: new List<string>(){"A", "C", "D"},question: "Druga litera alfabetu?")));
+            quiz1_Items.Add(quizItemRepo.Add(new QuizItem(id: 3, correctAnswer: "C", incorrectAnswers: new List<string>(){"B", "A", "D"},question: "Trzecia litera alfabetu?")));
+            quizRepo.Add(new Quiz(id: 1, items: quiz1_Items, title: "Alfabet"));
+            
+            /*List<QuizItem> quiz2_Items = new List<QuizItem>();
 
-                var animalQuestion3 = new QuizItem(
-                    3,
-                    "Which animal has the longest migration of any mammal?",
-                    new List<string> { "Caribou", "African elephant" },  
-                    "Gray whale");
+            quiz2_Items.Add(quizItemRepo.Add(new QuizItem(id: 4, correctAnswer: "1", incorrectAnswers: new List<string>(){"4", "2", "3"},question: "Ile to jest 1 + 0?")));
+            quiz2_Items.Add(quizItemRepo.Add(new QuizItem(id: 5, correctAnswer: "2", incorrectAnswers: new List<string>(){"1", "4", "3"},question: "Ile to jest 1 + 1?")));
+            quiz2_Items.Add(quizItemRepo.Add(new QuizItem(id: 6, correctAnswer: "3", incorrectAnswers: new List<string>(){"1", "2", "4"},question: "Ile to jest 1 + 2?")));
+            quizRepo.Add(new Quiz(id: 2, items: quiz2_Items, title: "Matematyka"));
 
-                quizItemRepo.Add(animalQuestion1);
-                quizItemRepo.Add(animalQuestion2);
-                quizItemRepo.Add(animalQuestion3);
-
-                var AnimalsQuiz = new Quiz(
-                    1,
-                    new List<QuizItem> { animalQuestion1, animalQuestion2, animalQuestion3 },
-                    " Animal Quiz");
-
-                quizRepo.Add(AnimalsQuiz);
-
-                var sportsQuestion1 = new QuizItem(
-                    1,
-                    "Which country won the 2018 FIFA World Cup?",
-                    new List<string> { "Germany", "Brazil" },  
-                    "France");
-
-                var sportsQuestion2 = new QuizItem(
-                    2,
-                    "Which city hosted the 2008 Summer Olympics?",
-                    new List<string> { "Athens","London" },  
-                    "Beijing");
-
-                var sportsQuestion3 = new QuizItem(
-                    3,
-                    "Who holds the record for most Grand Slam singles titles in tennis?",
-                    new List<string> {"Serena Williams", "Rafael Nadal" },
-                    "Roger Federer");
-
-                quizItemRepo.Add(sportsQuestion1);
-                quizItemRepo.Add(sportsQuestion2);
-                quizItemRepo.Add(sportsQuestion3);
-
-                var sportsQuiz = new Quiz(
-                    1,
-                    new List<QuizItem> { sportsQuestion1, sportsQuestion2, sportsQuestion3 },
-                    "Sports Quiz");
-
-                quizRepo.Add(sportsQuiz);
-
-
-
-            }
-
+            quizRepo.Add(new Quiz(id: 3, items: new List<QuizItem>(), title: "Test"));*/
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-using BackendLab01;
+using ApplicationCore.Interfaces.UserService;
 using BlazzorChat.Components;
 using BlazzorChat.Hubs;
 

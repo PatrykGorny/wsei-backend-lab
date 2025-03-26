@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlazzorChat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b443a4c85f817505324b6e5baa0abbe926089a1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cc5c2368a6d5e30250d75535aaa805ac99c6888")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlazzorChat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlazzorChat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,3 +1,4 @@
+using ApplicationCore.Interfaces.UserService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

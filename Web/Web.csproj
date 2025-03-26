@@ -17,4 +17,10 @@
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Pages\Quiz\QuizList.cshtml.cs">
+        <DependentUpon>QuizList.cshtml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

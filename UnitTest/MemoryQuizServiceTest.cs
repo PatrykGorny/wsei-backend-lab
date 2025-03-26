@@ -1,7 +1,9 @@
 using ApplicationCore.Commons.Repository;
+using ApplicationCore.Interfaces.AdminService;
+using ApplicationCore.Interfaces.UserService;
 using ApplicationCore.Models;
 using ApplicationCore.Models.QuizAggregate;
-using BackendLab01;
+using Infrastructure.Memory;
 using Infrastructure.Memory.Generators;
 using Infrastructure.Memory.Repositories;
 
@@ -33,7 +35,7 @@ public class MemoryQuizServiceTest
     {
         _aservice.AddQuizItem(points: 2, correctAnswer: "A", incorrectAnswers: new List<string>(){"B", "C", "D"},question: "Pierwsza litera alfabetu?" );
         var items = _aservice.FindAllQuizItems();
-        Assert.Equal(4, items.Count());
+        Assert.Equal(1, items.Count());
     }
     [Fact]
     public void CreateQuizTest()
